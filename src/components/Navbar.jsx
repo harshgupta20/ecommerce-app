@@ -33,7 +33,7 @@ const Navbar = () => {
             <div id="navbar">
                 <div id="nav-main">
                     <div id="nav-logo">
-                        <Link id="nav-link" to='/'>{Data.navbar.title}</Link>
+                        <Link id="nav-link" to='/'>LMA Cart</Link>
                     </div>
                         <ul id="nav-ul">
                             <li id="nav-li"><Link id="nav-link" to='/contact'>Contact</Link></li>
