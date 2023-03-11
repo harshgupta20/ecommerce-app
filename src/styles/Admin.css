@@ -1,0 +1,14 @@
+#admin-main{
+    width: 100%;
+    padding: 30px;
+}
+#admin-body{
+    display: flex;
+}
+#admin-h3{
+    margin: 20px;
+    border: 2px solid red;
+}
+#admin-name{
+    color: #865DFF;
+}

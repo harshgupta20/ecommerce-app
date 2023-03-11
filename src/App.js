@@ -32,7 +32,6 @@ function App() {
           <Route path='/admin' element={user ? <Admin/> : <Navigate to='/'/>}/>
         </Routes>
       </Router>
-      <h1>klkl</h1>
     </>
   );
 }
