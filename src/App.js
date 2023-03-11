@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 // Components
 import Navbar from './components/Navbar';
@@ -8,23 +8,28 @@ import Contact from './pages/Contact';
 import WishList from './pages/WishList';
 import Cart from './pages/Cart';
 import Account from './pages/Account';
-import { Component } from 'react';
 
+import { auth } from './config/Firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function App() {
+
+  const [user] = useAuthState(auth);
+
+
   return (
     <>
 
-      <BrowserRouter>
+      <Router>
         <Navbar />
         <Routes>
           <Route path='/' element={<Explore/>}/>
           <Route path='/contact' element={<Contact/>}/>
-          <Route path='/wish-list' element={<WishList/>}/>
-          <Route path='/cart' element={<Cart/>}/>
-          <Route path='/account' element={<Account/>}/>
+          <Route path='/wish-list' element={user ? <WishList/> : <Navigate to='/'/>}/>
+          <Route path='/cart' element={user ? <Cart/> : <Navigate to='/'/>}/>
+          <Route path='/account' element={user ? <Account/> : <Navigate to='/'/>}/>
         </Routes>
-      </BrowserRouter>
+      </Router>
       <h1>klkl</h1>
     </>
   );
