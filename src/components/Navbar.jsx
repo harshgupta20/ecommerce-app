@@ -40,6 +40,7 @@ const Navbar = () => {
                             {user?.displayName && <li id="nav-li"><Link id="nav-link" to='/wish-list'>Wish List</Link></li>}
                             {user?.displayName && <li id="nav-li"><Link id="nav-link" to='/cart'>Cart</Link></li>}
                             {user?.displayName && <li id="nav-li"><Link id="nav-link" to='/account'>Account</Link></li>}
+                            {user?.displayName && <li id="nav-li-admin"><Link id="nav-link" to='/admin'>Admin Panel</Link></li>}
                             {user?.displayName ? <li onClick={userLogoutFunc} id="nav-li"><Link id="nav-link" to='/'>Logout</Link></li> : <li onClick={userLoginFunc} id="nav-li"><Link id="nav-link" to='/'>Login</Link></li>}
                         </ul>
                 </div>

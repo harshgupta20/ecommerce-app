@@ -36,9 +36,14 @@
     color: #191825;
 }
 
-
 #nav-li:hover{
     color: #191825;
     background-color: white;
     cursor: pointer;
+}
+
+#nav-li-admin{
+    margin: 10px;
+    padding: 5px;
+    background-color: #865DFF;
 }
