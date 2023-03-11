@@ -24,12 +24,12 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path='/' element={<Explore/>}/>
-          <Route path='/contact' element={<Contact/>}/>
-          <Route path='/wish-list' element={user ? <WishList/> : <Navigate to='/'/>}/>
-          <Route path='/cart' element={user ? <Cart/> : <Navigate to='/'/>}/>
-          <Route path='/account' element={user ? <Account/> : <Navigate to='/'/>}/>
-          <Route path='/admin' element={user ? <Admin/> : <Navigate to='/'/>}/>
+          <Route exact path='/' element={<Explore/>}/>
+          <Route exact path='/contact' element={<Contact/>}/>
+          <Route exact path='/wish-list' element={user ? <WishList/> : <Navigate to='/'/>}/>
+          <Route exact path='/cart' element={user ? <Cart/> : <Navigate to='/'/>}/>
+          <Route exact path='/account' element={user ? <Account/> : <Navigate to='/'/>}/>
+          <Route exact path='/admin' element={user ? <Admin/> : <Navigate to='/'/>}/>
         </Routes>
       </Router>
     </>

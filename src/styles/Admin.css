@@ -2,13 +2,73 @@
     width: 100%;
     padding: 30px;
 }
-#admin-body{
-    display: flex;
-}
 #admin-h3{
     margin: 20px;
     border: 2px solid red;
 }
 #admin-name{
     color: #865DFF;
+}
+#admin-body{
+    display: flex;
+    /* border: 2px solid red; */
+
+}
+#admin-data{
+    width: 70%;
+}
+
+/* Table CSS */
+#admin-table{
+    width: 100%;
+    border: 1px solid grey;
+    padding: 5px;
+}
+#admin-tr{
+    text-align: center;
+    border-bottom: 1px solid grey;
+}
+#admin-th-head{
+    background-color: #191825;
+    color: white;
+    padding: 5px;
+}
+
+#admin-td{
+    /* max-width: 40px; */
+}
+
+#admin-td-img{
+    width: 50px;
+    /* max-width: 20%; */
+    /* overflow-x: scroll; */
+}
+
+
+
+
+
+#admin-add-product{
+    width: 30%;
+    margin: 0 20px 0 20px;
+}
+#admin-add-form{
+    display: flex;
+    flex-direction: column;
+}
+#admin-add-input{
+    padding: 5px;
+    outline: none;
+    margin: 5px;
+}
+#admin-add-btn{
+    padding: 5px;
+    margin: 5px;
+    border: none;
+    background-color: #865DFF;
+    color: #fff;
+    cursor: pointer;
+}
+#admin-add-btn:hover{
+    opacity: 0.6;
 }
