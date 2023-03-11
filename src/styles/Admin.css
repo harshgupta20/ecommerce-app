@@ -34,8 +34,8 @@
     padding: 5px;
 }
 
-#admin-td{
-    /* max-width: 40px; */
+#admin-td-size{
+    font-size: 200px;
 }
 
 #admin-td-img{
