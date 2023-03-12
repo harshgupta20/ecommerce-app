@@ -20,7 +20,7 @@ const Navbar = () => {
 
     const userLoginFunc = async () => {
         const userInfo = await signInWithPopup(auth, provider);
-        console.log(userInfo);
+        // console.log(userInfo);
     }
     const userLogoutFunc = async () => {
         await signOut(auth);

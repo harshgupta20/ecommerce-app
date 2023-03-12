@@ -33,21 +33,21 @@ const Admin = () => {
 
   // Uploading the image and getting the url
   const uploadImagehandle = async () => {
-    console.log("inside");
+    // console.log("inside");
     if (id && imagePath) {
-      console.log("path");
-      console.log(imagePath);
+      // console.log("path");
+      // console.log(imagePath);
       const uploadRef = ref(storage, `product_images/${id}`);
       await uploadBytes(uploadRef, imagePath).then(() => {
-        console.log(id);
+        // console.log(id);
         alert("Uploaded Success !");
       })
       // Download Link
       await getDownloadURL(uploadRef)
         .then((url) => {
           setImageURL(url);
-          console.log("Image URL");
-          console.log(url);
+          // console.log("Image URL");
+          // console.log(url);
         })
 
       setCheckUploadStatus(true);
@@ -58,7 +58,7 @@ const Admin = () => {
 
 
   const addNewProduct = async () => {
-    console.log("inside");
+    // console.log("inside");
 
     if (id && name && category && amount && imagePath) {
       if(checkUploadStatus){

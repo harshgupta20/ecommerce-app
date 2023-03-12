@@ -22,7 +22,7 @@ const Explore = () => {
 //     <DocsTable key={doc.id} docData={doc} />
 // )) : ""}
 
-  console.log(Data);
+  // console.log(Data);
 
   return (
     <>
