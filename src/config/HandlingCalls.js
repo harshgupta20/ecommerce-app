@@ -35,7 +35,7 @@ export const productDelete = async (product_id) => {
 
 
 
-export const WishListUpload = async (id, name, category, amount, imageURL, email) => {
+export const WishListUpload = async (id, name, imageURL, amount, category, email) => {
     const newCollectionRef = collection(db, 'user', email, 'wishlist')
     await addDoc(newCollectionRef, {
         product_id:id,
@@ -44,4 +44,13 @@ export const WishListUpload = async (id, name, category, amount, imageURL, email
         product_amount: amount,
         product_category: category
     })
+}
+
+export const WishListRead = async (email) => {
+    const newCollectionRef = collection(db, 'user', email, 'wishlist');
+    const data = await getDocs(newCollectionRef);
+    return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+}
+export const WishListDelete = async (email, id) => {
+    await deleteDoc(doc(db, "user", email, "wishlist", id));
 }
