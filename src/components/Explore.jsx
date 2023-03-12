@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { productRead } from "../config/HandlingCalls";
+import { CartState } from '../context/Context';
 
 import Data from "../Customisation/Data";
 
@@ -18,11 +19,17 @@ const Explore = () => {
   // });
 
 
-//   {allDocs ? allDocs.filter(doc=>doc.email.toLowerCase().includes(simpleSearch)).map((doc) => (
-//     <DocsTable key={doc.id} docData={doc} />
-// )) : ""}
-
   // console.log(Data);
+
+
+
+
+  //-----------Check Context API
+  // const {state} = CartState();
+  // console.log(state);
+  //------------ Add and Remove CART
+  const { state: { cart }, dispatch } = CartState();
+  console.log(cart);
 
   return (
     <>
@@ -37,9 +44,9 @@ const Explore = () => {
           <div id="ex-products-list">
 
             {
-              Data.filter(data=> {
-                  return data.product_name.toLowerCase().includes(search) || data.product_category.toLowerCase().includes(search);            
-              } ).map((data) => {
+              Data.filter(data => {
+                return data.product_name.toLowerCase().includes(search) || data.product_category.toLowerCase().includes(search);
+              }).map((data) => {
                 return (
                   <div id="ex-product-card">
                     <img id="ex-card-img" src={data.product_image} alt="" />
@@ -48,7 +55,19 @@ const Explore = () => {
                       <p id="ex-group-p1">Amount : {data.product_amount} Rs.</p>
                       <p id="ex-group-p2">{data.product_category}</p>
                     </div>
-                    <button id="ex-product-btn">Add to Cart</button>
+
+                    {/* Feature to show ADD and REMOVE CART option by CONTEXT_API */}
+                    {
+                      cart.some((p) => p.id === data.id) ?
+                        (<button id="ex-product-btn" onClick={()=> {
+                          dispatch({type:"REMOVE_FROM_CART", payload: data})
+                        }}>Remove from Cart</button>)
+                        :
+                        (<button id="ex-product-btn" onClick={()=>{
+                          dispatch({type:"ADD_TO_CART", payload: data})
+                        }}>Add to Cart</button>)
+                    }
+                    {/* <button id="ex-product-btn">Add to Cart</button> */}
                   </div>
                 )
               })

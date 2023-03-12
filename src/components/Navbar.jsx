@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 
 // Components
 import Data from "../Customisation/Data";
+import { CartState } from "../context/Context";
 
 const Navbar = () => {
 
@@ -26,7 +27,9 @@ const Navbar = () => {
         await signOut(auth);
     }
 
- 
+
+    // CART VALUE UPDATE BY CONTEXT_API
+    const {state:{cart}} = CartState();
 
     return (
         <>
@@ -38,7 +41,7 @@ const Navbar = () => {
                         <ul id="nav-ul">
                             <li id="nav-li"><Link id="nav-link" to='/contact'>Contact</Link></li>
                             {user?.displayName && <li id="nav-li"><Link id="nav-link" to='/wish-list'>Wish List</Link></li>}
-                            {user?.displayName && <li id="nav-li"><Link id="nav-link" to='/cart'>Cart</Link></li>}
+                            {user?.displayName && <li id="nav-li"><Link id="nav-link" to='/cart'>Cart <span>( {cart.length} )</span></Link></li>}
                             {user?.displayName && <li id="nav-li"><Link id="nav-link" to='/account'>Account</Link></li>}
                             {user?.displayName && <li id="nav-li-admin"><Link id="nav-link" to='/admin'>Admin Panel</Link></li>}
                             {user?.displayName ? <li onClick={userLogoutFunc} id="nav-li"><Link id="nav-link" to='/'>Logout</Link></li> : <li onClick={userLoginFunc} id="nav-li"><Link id="nav-link" to='/'>Login</Link></li>}
