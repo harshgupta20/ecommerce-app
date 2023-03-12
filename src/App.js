@@ -12,6 +12,7 @@ import Admin from "./pages/Admin";
 
 import { auth } from './config/Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route exact path='/account' element={user ? <Account/> : <Navigate to='/'/>}/>
           <Route exact path='/admin' element={user ? <Admin/> : <Navigate to='/'/>}/>
         </Routes>
+        <Footer/>
       </Router>
     </>
   );
