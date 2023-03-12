@@ -1,5 +1,6 @@
-import React from 'react'
-import { CartState } from '../context/Context'
+import React from 'react';
+import { CartState } from '../context/Context';
+import "../styles/WishList.css";
 
 
 
@@ -10,7 +11,7 @@ const WishList = () => {
     <>
       <div id="wish-main">
         <div id="wish-list-main">
-          <h2>Order History</h2>
+          <h2>Your Wishlist</h2>
           <table id="wish-table">
             <tr id="wish-tr">
               <th id="wish-th-head">Product ID</th>
