@@ -49,7 +49,7 @@ const Explore = () => {
   // console.log(state);
   //------------ Add and Remove CART
   const { state: { cart }, dispatch } = CartState();
-  console.log(cart);
+  // console.log(cart);
 
   return (
     <>
@@ -81,7 +81,7 @@ const Explore = () => {
                       cart.some((p) => p.id === data.id) ?
                         (<button id="ex-product-btn" onClick={()=> {RemoveFromCart(data)}}>Remove from Cart</button>)
                         :
-                        (<button id="ex-product-btn" onClick={()=>{AddToCart(data)}}>Add to Cart</button>)
+                        (user ? <button id="ex-product-btn" onClick={()=>{AddToCart(data)}}>Add to Cart</button> : <button id="ex-product-btn" onClick={()=> {alert("Login Required");}}>Add to Cart</button>)
                     }
                     {/* <button id="ex-product-btn">Add to Cart</button> */}
                   </div>
