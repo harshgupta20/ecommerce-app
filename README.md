@@ -1,10 +1,17 @@
-# Getting Started with Create React App
+# Ecommmerce App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To view the project live [Click Here](https://ecommerce-app-b2aa6.web.app/).
 
-## Available Scripts
 
-In the project directory, you can run:
+
+
+
+
+## Features
+- Explore feed to search across products
+- Search bar to filter content
+- User Account, Wishlist and Add to Cart
+- Admin Panel to ADD and DELETE products 
 
 ### `npm start`
 
