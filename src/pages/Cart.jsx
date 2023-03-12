@@ -25,7 +25,7 @@ const Cart = () => {
     })
 
     setTimeout(()=>{
-      alert(`Thanks for shopping ${user.displayName}, Check "Account" for order history and We have sent an confirmation email`)
+      alert(`Thanks for shopping ${user.displayName}, Check "Account" for order history.`)
         window.location.reload();
     }, 3000)
   }

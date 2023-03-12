@@ -3,7 +3,7 @@ import React from 'react';
 import "../styles/Footer.css";
 
 const Footer = () => {
-  return (
+  return ( 
     <>
         <div id="footer">
             <p id="foo-p1">Made by <a id="foo-p1-a" href="https://www.linkedin.com/in/harshgupta2001/">Harsh Gupta</a></p>
