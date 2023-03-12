@@ -5,45 +5,51 @@ import "../styles/Cart.css"
 import { auth } from '../config/Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { OrderUpload } from '../config/HandlingCalls';
+import { Audio } from 'react-loader-spinner'
 
 const Cart = () => {
 
-  const {state:{cart}, dispatch} = CartState();
+  const { state: { cart }, dispatch } = CartState();
   const [total, setTotal] = useState(0);
   const [user] = useAuthState(auth);
 
   const DecQty = (data) => {
-    dispatch({type:"REMOVE_FROM_CART", payload: data});
+    dispatch({ type: "REMOVE_FROM_CART", payload: data });
 
   }
 
 
   const proceedtoCheck = async () => {
-      cart.map((data)=> {
+    document.getElementById("loader").style.display = "block";
+    
+    cart.map((data) => {
       console.log("inside");
       OrderUpload(data.id, data.product_name, data.product_image, data.product_amount, data.product_category, user.email);
     })
 
-    setTimeout(()=>{
+    setTimeout(() => {
       alert(`Thanks for shopping ${user.displayName}, Check "Account" for order history.`)
+        document.getElementById("loader").style.display = "none";
         window.location.reload();
-    }, 3000)
+    }, 4000)
   }
 
   console.log(cart);
 
-  useEffect(()=> {
+  useEffect(() => {
     let cartTotal = 0;
-      cart.map((product)=>{
-        const amountInt = parseInt(product.product_amount);
-        const qtyInt = parseInt(product.qty);
-        cartTotal= cartTotal + (amountInt*qtyInt);
-        setTotal(cartTotal);
-      }) 
-      if(cart.length == 0){
-        setTotal(0);
-      } 
+    cart.map((product) => {
+      const amountInt = parseInt(product.product_amount);
+      const qtyInt = parseInt(product.qty);
+      cartTotal = cartTotal + (amountInt * qtyInt);
+      setTotal(cartTotal);
+    })
+    if (cart.length == 0) {
+      setTotal(0);
+    }
   });
+
+
 
   console.log(total);
 
@@ -52,6 +58,7 @@ const Cart = () => {
   return (
     <>
       <div id="cart-main">
+      <div id="loader" class="center"></div>
         <div id="cart-list-main">
           <table id="cart-table">
             <tr id="cart-tr">
@@ -81,14 +88,14 @@ const Cart = () => {
           </table>
         </div>
         <div id="cart-checkout-main">
-            <div id="cart-checkout-body">
-              <h3 id="cart-cehckout-h3">Subtotal ({cart.length}) Items</h3>
+          <div id="cart-checkout-body">
+            <h3 id="cart-cehckout-h3">Subtotal ({cart.length}) Items</h3>
 
-              <div id="cart-checkout-btn-group">
-                <p id="cart-checkout-p">Rs. {total}</p>
-                <button onClick={proceedtoCheck} id="cart-checkout-btn">Proceed to Checkout</button>
-              </div>
+            <div id="cart-checkout-btn-group">
+              <p id="cart-checkout-p">Rs. {total}</p>
+              <button onClick={proceedtoCheck} id="cart-checkout-btn">Proceed to Checkout</button>
             </div>
+          </div>
         </div>
       </div>
     </>
