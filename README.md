@@ -2,10 +2,7 @@
 
 To view the project live [Click Here](https://ecommerce-app-b2aa6.web.app/).
 
-
-
-
-
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/59175412/224564075-740613b2-9136-47c4-b6d7-8d236bc247e3.gif)
 
 ## Features
 - Explore feed to search across products
@@ -73,5 +70,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
 ### `npm run build` fails to minify
+
+
+
+
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
