@@ -54,3 +54,34 @@ export const WishListRead = async (email) => {
 export const WishListDelete = async (email, id) => {
     await deleteDoc(doc(db, "user", email, "wishlist", id));
 }
+
+
+
+
+
+export const OrderUpload = async (id, name, imageURL, amount, category, email) => {
+    // const newCollectionRef = collection(db, 'user', email, 'orders',id)
+    // await setDoc(newCollectionRef, {
+    //     product_id:id,
+    //     product_name: name,
+    //     product_image: imageURL,
+    //     product_amount: amount,
+    //     product_category: category
+    // })
+
+    await setDoc(doc(db, "user", email,'orders',id), {
+        product_id:id,
+        product_name: name,
+        product_image: imageURL,
+        product_amount: amount,
+        product_category: category
+    });
+}
+
+
+
+export const OrdersRead = async (email) => {
+    const newCollectionRef = collection(db, 'user', email, 'orders');
+    const data = await getDocs(newCollectionRef);
+    return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+}

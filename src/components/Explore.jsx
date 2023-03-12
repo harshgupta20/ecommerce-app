@@ -37,6 +37,13 @@ const Explore = () => {
 
   // console.log(Data);
 
+  const RemoveFromCart = (data) => {
+    dispatch({type:"REMOVE_FROM_CART", payload: data})
+  }
+  const AddToCart = (data) => {
+    dispatch({type:"ADD_TO_CART", payload: data})
+  }
+
 
 
 
@@ -75,13 +82,9 @@ const Explore = () => {
                     {/* Feature to show ADD and REMOVE CART option by CONTEXT_API */}
                     {
                       cart.some((p) => p.id === data.id) ?
-                        (<button id="ex-product-btn" onClick={()=> {
-                          dispatch({type:"REMOVE_FROM_CART", payload: data})
-                        }}>Remove from Cart</button>)
+                        (<button id="ex-product-btn" onClick={()=> {RemoveFromCart(data)}}>Remove from Cart</button>)
                         :
-                        (<button id="ex-product-btn" onClick={()=>{
-                          dispatch({type:"ADD_TO_CART", payload: data})
-                        }}>Add to Cart</button>)
+                        (<button id="ex-product-btn" onClick={()=>{AddToCart(data)}}>Add to Cart</button>)
                     }
                     {/* <button id="ex-product-btn">Add to Cart</button> */}
                   </div>

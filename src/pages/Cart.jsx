@@ -2,18 +2,35 @@ import React, { useEffect, useState } from 'react';
 import { CartState } from '../context/Context';
 import "../styles/Cart.css"
 
+import { auth } from '../config/Firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { OrderUpload } from '../config/HandlingCalls';
+
 const Cart = () => {
 
   const {state:{cart}, dispatch} = CartState();
-
   const [total, setTotal] = useState(0);
-
-
+  const [user] = useAuthState(auth);
 
   const DecQty = (data) => {
     dispatch({type:"REMOVE_FROM_CART", payload: data});
 
   }
+
+
+  const proceedtoCheck = async () => {
+      cart.map((data)=> {
+      console.log("inside");
+      OrderUpload(data.id, data.product_name, data.product_image, data.product_amount, data.product_category, user.email);
+    })
+
+    setTimeout(()=>{
+      alert(`Thanks for shopping ${user.displayName}, Check "Account" for order history and We have sent an confirmation email`)
+        window.location.reload();
+    }, 3000)
+  }
+
+  console.log(cart);
 
   useEffect(()=> {
     let cartTotal = 0;
@@ -69,7 +86,7 @@ const Cart = () => {
 
               <div id="cart-checkout-btn-group">
                 <p id="cart-checkout-p">Rs. {total}</p>
-                <button id="cart-checkout-btn">Proceed to Checkout</button>
+                <button onClick={proceedtoCheck} id="cart-checkout-btn">Proceed to Checkout</button>
               </div>
             </div>
         </div>

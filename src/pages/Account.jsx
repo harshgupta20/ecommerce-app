@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CartState } from '../context/Context';
 import "../styles/Account.css";
+import { auth } from '../config/Firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { OrdersRead } from '../config/HandlingCalls';
 
 const Account = () => {
 
   const {state:{cart}} = CartState();
+  const [user] = useAuthState(auth);
+  const [order, setOrder] = useState();
+
+
+  useEffect(()=> {
+    OrdersRead(user.email).then((data)=>{
+      setOrder(data);
+    });
+  },[])
 
   return (
     <>
       <div id="acc-main">
         <div id="acc-checkout-main">
             <div id="acc-checkout-body">
-              <img src="https://picsum.photos/id/237/200/300" alt="df" style={{width:"70px"}} />
-              <h3 id="acc-cehckout-h3">Harsh Gupta</h3>
-              <h6 id="acc-cehckout-h3">hgupta42774@gmail.com</h6>
+              <img src={user?.photoURL} alt={user?.displayName} style={{width:"100px"}} />
+              <h3 id="acc-cehckout-h3">{user?.displayName}</h3>
+              <h6 id="acc-cehckout-h3">{user?.email}</h6>
 
               {/* <div id="acc-checkout-btn-group">
                 <p id="acc-checkout-p">Rs. 78</p>
@@ -31,10 +43,10 @@ const Account = () => {
               <th id="acc-th-head">Category</th>
               <th id="acc-th-head">Amount</th>
               {/* <th id="acc-th-head">Update</th> */}
-              <th id="acc-th-head">Delete</th>
+              {/* <th id="acc-th-head">Delete</th> */}
             </tr>
             {
-              cart && cart.map((data, key) => {
+              order && order.map((data, key) => {
                 return (
                   <tr id="acc-tr" key={key}>
                     <td id="acc-td">{data.id}</td>
