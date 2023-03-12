@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 // Components
 import Navbar from './components/Navbar';
 import Explore from './components/Explore';
-import Contact from './pages/Contact';
 import WishList from './pages/WishList';
 import Cart from './pages/Cart';
 import Account from './pages/Account';
@@ -26,11 +25,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path='/' element={<Explore/>}/>
-          <Route exact path='/contact' element={<Contact/>}/>
           <Route exact path='/wish-list' element={user ? <WishList/> : <Navigate to='/'/>}/>
           <Route exact path='/cart' element={user ? <Cart/> : <Navigate to='/'/>}/>
           <Route exact path='/account' element={user ? <Account/> : <Navigate to='/'/>}/>
-          <Route exact path='/admin' element={user ? <Admin/> : <Navigate to='/'/>}/>
+          <Route exact path='/admin' element={user && <Admin/>}/>
         </Routes>
         <Footer/>
       </Router>

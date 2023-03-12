@@ -108,7 +108,7 @@ const Admin = () => {
                   <th id="admin-th-head">Image</th>
                   <th id="admin-th-head">Category</th>
                   <th id="admin-th-head">Amount</th>
-                  <th id="admin-th-head">Update</th>
+                  {/* <th id="admin-th-head">Update</th> */}
                   <th id="admin-th-head">Delete</th>
                 </tr>
                 {
@@ -120,7 +120,7 @@ const Admin = () => {
                         <td id="admin-td admin-td-size"><img id="admin-td-img" src={data.product_image} alt={data.product_image} /> <a href={data.product_image} target="_blank"><button>View Image</button></a></td>
                         <td id="admin-td">{data.product_category}</td>
                         <td id="admin-td">{data.product_amount}</td>
-                        <td id="admin-td"><button style={{backgroundColor:'grey', color:'#fff', padding:'5px', border:'none', cursor:'pointer'}}>Update</button></td>
+                        {/* <td id="admin-td"><button style={{backgroundColor:'grey', color:'#fff', padding:'5px', border:'none', cursor:'pointer'}}>Update</button></td> */}
                         <td id="admin-td"><button onClick={()=> deleteProduct(data.id)} style={{backgroundColor:'red', color:'#fff', padding:'5px', border:'none', cursor:'pointer'}}>Delete</button></td>
                       </tr>
                     )

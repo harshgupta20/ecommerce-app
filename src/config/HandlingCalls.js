@@ -1,12 +1,24 @@
-import { getDocs, collection, setDoc, doc, deleteDoc, addDoc } from "firebase/firestore";
-import { getStorage, ref, deleteObject } from "firebase/storage";
+import { getDocs, collection, setDoc, doc, deleteDoc, addDoc, getDoc } from "firebase/firestore";
+import { ref, deleteObject } from "firebase/storage";
 import { db, storage } from "./Firebase";
 
 
 
+export const loginAccount = async (name, email) => {
+    await setDoc(doc(db, "user", email), {
+        name: name,
+        email: email,
+    });
+}
+
+// export const readAccount = async (email) => {
+//     const docRef = doc(db, "user", email);
+//     const docSnap = await getDoc(docRef);
+//     return docSnap.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+// }
+
 
 const productRef = collection(db, "products");
-
 export const productRead = async () => {
     const data = await getDocs(productRef);
     // const data.docs.map((doc) => ({...doc.data(), id : doc.id})));
@@ -22,7 +34,7 @@ export const productAdd = async (id, name, category, amount, imageURL) => {
         product_category: category,
         product_amount: amount
     });
-    
+
     console.log("End");
 }
 
@@ -38,7 +50,7 @@ export const productDelete = async (product_id) => {
 export const WishListUpload = async (id, name, imageURL, amount, category, email) => {
     const newCollectionRef = collection(db, 'user', email, 'wishlist')
     await addDoc(newCollectionRef, {
-        product_id:id,
+        product_id: id,
         product_name: name,
         product_image: imageURL,
         product_amount: amount,
@@ -69,8 +81,8 @@ export const OrderUpload = async (id, name, imageURL, amount, category, email) =
     //     product_category: category
     // })
 
-    await setDoc(doc(db, "user", email,'orders',id), {
-        product_id:id,
+    await setDoc(doc(db, "user", email, 'orders', id), {
+        product_id: id,
         product_name: name,
         product_image: imageURL,
         product_amount: amount,

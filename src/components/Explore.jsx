@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { productRead, WishListUpload } from "../config/HandlingCalls";
+import { productRead, WishListRead, WishListUpload } from "../config/HandlingCalls";
 import { CartState } from '../context/Context';
 import { auth } from "../config/Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -14,6 +14,8 @@ const Explore = () => {
   const [search, setSearch] = useState('');
   const [user] = useAuthState(auth);
 
+  const [wishList, setWishList] = useState();
+
   useEffect(() => {
     loadData();
   },[]);
@@ -23,11 +25,6 @@ const Explore = () => {
       setProductList(data);
     });
   } 
-
-
-
-
-
   const addToWishlist = (data) => {
     console.log(data);
     WishListUpload(data.id, data.product_name, data.product_image, data.product_amount, data.product_category, user.email).then(()=>{

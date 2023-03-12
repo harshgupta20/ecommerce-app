@@ -21,6 +21,7 @@ const WishList = () => {
   const deleteWishlist = (data) => {
     WishListDelete(user.email, data.id).then(()=>{
       alert("Product removed from wishlist");
+      window.location.reload();
     });
   }
 
