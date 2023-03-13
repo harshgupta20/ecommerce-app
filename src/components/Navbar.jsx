@@ -63,7 +63,7 @@ const Navbar = () => {
             <div id="navbar">
                 <div id="nav-main">
                     <div id="nav-logo">
-                        <Link id="nav-link" to='/'>LMA Cart</Link>
+                        <Link id="nav-link-title" to='/'>E-Buy</Link>
                     </div>
                         <ul id="nav-ul">
                             {user?.displayName && <li id="nav-li"><Link id="nav-link" to='/wish-list'>Wish List</Link></li>}
