@@ -7,6 +7,8 @@ import { auth } from '../config/Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { WishListDelete, WishListRead } from '../config/HandlingCalls';
 
+import CryptoJS from "crypto-js";
+
 const WishList = () => {
 
   const [user] = useAuthState(auth);
@@ -25,6 +27,8 @@ const WishList = () => {
     });
   }
 
+  // CryptoJS.AES.decrypt(ciphertext, 'secret key').toString(CryptoJS.enc.Utf8)
+  var sample_key = "secret key";
 
   const {cart} = CartState();
   return (
@@ -39,18 +43,26 @@ const WishList = () => {
               <th id="wish-th-head">Image</th>
               <th id="wish-th-head">Category</th>
               <th id="wish-th-head">Amount</th>
-              {/* <th id="wish-th-head">Update</th> */}
               <th id="wish-th-head">Delete</th>
             </tr>
             {
               wishlist && wishlist.map((data, key) => {
                 return (
                   <tr id="wish-tr" key={key}>
-                    <td id="wish-td">{data.product_id}</td>
-                    <td id="wish-td">{data.product_name}</td>
+                    {/* <td id="wish-td">{data.product_id}</td> */}
+                    <td id="wish-td">{CryptoJS.AES.decrypt(data.product_id, sample_key).toString(CryptoJS.enc.Utf8)}</td>
+
+                    <td id="wish-td">{CryptoJS.AES.decrypt(data.product_name, sample_key).toString(CryptoJS.enc.Utf8)}</td>
+                    {/* <td id="wish-td">{data.product_name}</td> */}
+
                     <td id="wish-td wish-td-size"><img id="wish-td-img" src={data.product_image} alt={data.product_image} /> <a href={data.product_image} target="_blank"><button>View Image</button></a></td>
-                    <td id="wish-td">{data.product_category}</td>
-                    <td id="wish-td">{data.product_amount}</td>
+                    
+                    {/* <td id="wish-td">{data.product_category}</td> */}
+                    <td id="wish-td">{CryptoJS.AES.decrypt(data.product_category, sample_key).toString(CryptoJS.enc.Utf8)}</td>
+                    
+                    {/* <td id="wish-td">{data.product_amount}</td> */}
+                    <td id="wish-td">{CryptoJS.AES.decrypt(data.product_amount, sample_key).toString(CryptoJS.enc.Utf8)}</td>
+                    
                     {/* <td id="wish-td"><button onClick={()=> IncQty(data)} style={{ backgroundColor: 'grey', color: '#fff', padding: '5px', border: 'none', cursor: 'pointer' }}>Update</button></td> */}
                     <td id="wish-td"><button onClick={() => deleteWishlist(data)} style={{ backgroundColor: 'red', color: '#fff', padding: '5px', border: 'none', cursor: 'pointer' }}>Delete</button></td>
                   </tr>

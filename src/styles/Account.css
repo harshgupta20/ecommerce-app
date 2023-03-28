@@ -1,16 +1,42 @@
 #acc-main{
     width: 100%;
-    /* border: 2px solid blue; */
-    padding: 10px;
+    border: 2px solid blue;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 30px;
+    
+}
+/* Checkout */
+#acc-checkout-main{
+    width: 100%;
+    /* background-color: #191825; */
+    background-color: #865DFF;
+    border-radius: 20px;
+    color: #fff;
     padding: 30px;
 
+    /* border: 2px solid #191825; */
+
+    /* box-shadow: 0px 0px 5px 0px #865DFF;
+    -webkit-box-shadow: 0px 0px 5px 0px #865DFF;
+    -moz-box-shadow: 0px 0px 5px 0px #865DFF; */
 }
+#acc-checkout-body{
+    display: flex;
+}
+#acc-checkout-userdata{
+    margin: 20px;
+}
+#acc-checkout-h3{
+    font-size: 30px;
+}
+
+
+
 
 #acc-list-main{
     width: 60%;
-    /* border: 2px solid red; */
+    border: 2px solid red;
 }
 
 
@@ -42,18 +68,7 @@
 
 
 
-/* Checkout */
-#acc-checkout-main{
-    width: 30%;
-
-    background-color: #191825;
-    color: #fff;
-    padding: 30px;
-}
-#acc-cehckout-h3{
-    /* margin-bottom: 30px; */
-}
-#acc-checkout-btn{
+/* #acc-checkout-btn{
     width: 50%;
     margin-top: 10px;
     padding: 5px;
@@ -66,4 +81,53 @@
 #acc-checkout-btn:hover{
     background-color: #fff;
     color: #191825;
+} */
+
+
+
+
+
+#acc-product-list{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+#acc-single-product{
+    width: 500px;
+    /* margin: 20px; */
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    /* text-align: center; */
+    /* border: 2px solid red; */
+    border-radius: 30px;
+    transition: .3s all;
+    transform: scale(0.9);
+    
+    box-shadow: 0px 0px 5px 0px #865DFF;
+    -webkit-box-shadow: 0px 0px 5px 0px #865DFF;
+    -moz-box-shadow: 0px 0px 5px 0px #865DFF;
+}
+#acc-data-block{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    /* border: 2px solid red; */
+}
+#acc-img{
+    /* border: 2px solid red; */
+    width: 400px;
+    height: 300px;
+    border-radius: 20px;
+}
+#acc-block-p1{
+    font-size: larger;
+    font-weight: bold;
+}
+#acc-block-p2{
+    font-style: italic;
+    margin-bottom: 30px;
 }

@@ -4,7 +4,11 @@ import { productRead, WishListRead, WishListUpload } from "../config/HandlingCal
 import { CartState } from '../context/Context';
 import { auth } from "../config/Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Data from "../Customisation/Data";
+// import Data from "../Customisation/Data";
+
+// var CryptoJS = require("crypto-js");
+import CryptoJS from "crypto-js";
+
 
 import "../styles/Explore.css";
 
@@ -13,6 +17,9 @@ const Explore = () => {
   const [productList, setProductList] = useState([]);
   const [search, setSearch] = useState('');
   const [user] = useAuthState(auth);
+
+  // Crypto-js
+  var sample_key = "secret key";
 
   const [wishList, setWishList] = useState();
 
@@ -27,7 +34,18 @@ const Explore = () => {
   } 
   const addToWishlist = (data) => {
     console.log(data);
-    WishListUpload(data.id, data.product_name, data.product_image, data.product_amount, data.product_category, user.email).then(()=>{
+
+    var product__id = data.id;
+    var product__name = data.product_name;
+    var product__amount = data.product_amount;
+    var product__category = data.product_category;
+
+    product__id = CryptoJS.AES.encrypt(product__id, sample_key).toString();
+    product__name = CryptoJS.AES.encrypt(product__name, sample_key).toString();
+    product__amount = CryptoJS.AES.encrypt(product__amount, sample_key).toString();
+    product__category = CryptoJS.AES.encrypt(product__category, sample_key).toString();
+
+    WishListUpload(product__id, product__name, data.product_image, product__amount, product__category, user.email).then(()=>{
       alert("Added to wishlist");
     });
   }

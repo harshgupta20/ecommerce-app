@@ -5,7 +5,6 @@ import "../styles/Cart.css"
 import { auth } from '../config/Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { OrderUpload } from '../config/HandlingCalls';
-import { Audio } from 'react-loader-spinner'
 
 const Cart = () => {
 
@@ -67,7 +66,6 @@ const Cart = () => {
               <th id="cart-th-head">Image</th>
               <th id="cart-th-head">Category</th>
               <th id="cart-th-head">Amount</th>
-              {/* <th id="cart-th-head">Update</th> */}
               <th id="cart-th-head">Delete</th>
             </tr>
             {
@@ -79,7 +77,6 @@ const Cart = () => {
                     <td id="cart-td cart-td-size"><img id="cart-td-img" src={data.product_image} alt={data.product_image} /> <a href={data.product_image} target="_blank"><button>View Image</button></a></td>
                     <td id="cart-td">{data.product_category}</td>
                     <td id="cart-td">{data.product_amount}</td>
-                    {/* <td id="cart-td"><button onClick={()=> IncQty(data)} style={{ backgroundColor: 'grey', color: '#fff', padding: '5px', border: 'none', cursor: 'pointer' }}>Update</button></td> */}
                     <td id="cart-td"><button onClick={() => DecQty(data)} style={{ backgroundColor: 'red', color: '#fff', padding: '5px', border: 'none', cursor: 'pointer' }}>Delete</button></td>
                   </tr>
                 )
